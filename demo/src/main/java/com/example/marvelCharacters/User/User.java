@@ -22,6 +22,9 @@ public class User {
         this.userid = userid;
     }
 
+    public User() {
+    }
+
     public String getImie() {
         return imie;
     }
@@ -66,7 +69,11 @@ public class User {
         return userid;
     }
 
+
+    /*
+    //prawdopodobnie niepotrzebne
     public void setUserid(Long userid) {
         this.userid = userid;
     }
+     */
 }
