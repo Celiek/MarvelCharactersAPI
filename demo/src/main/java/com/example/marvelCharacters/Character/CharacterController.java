@@ -1,6 +1,11 @@
 package com.example.marvelCharacters.Character;
 
-public class Character {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Marvel_Super_Heroes")
+public class CharacterController {
     private String marvel_comic_character_name;
     private String comic_appearance_1;
     private String comic_appearance_2;
@@ -38,7 +43,7 @@ public class Character {
     private String comic_appearance_34;
     private String comic_appearance_35;
 
-    public Character(String marvel_comic_character_name, String comic_appearance_1, String comic_appearance_2, String comic_appearance_3, String comic_appearance_4, String comic_appearance_5, String comic_appearance_6, String comic_appearance_7, String comic_appearance_8, String comic_appearance_9, String comic_appearance_10, String comic_appearance_11, String comic_appearance_12, String comic_appearance_13, String comic_appearance_14, String comic_appearance_15, String comic_appearance_16, String comic_appearance_17, String comic_appearance_18, String comic_appearance_19, String comic_appearance_20, String comic_appearance_21, String comic_appearance_22, String comic_appearance_23, String comic_appearance_24, String comic_appearance_25, String comic_appearance_26, String comic_appearance_27, String comic_appearance_28, String comic_appearance_29, String comic_appearance_30, String comic_appearance_31, String comic_appearance_32, String comic_appearance_33, String comic_appearance_34, String comic_appearance_35) {
+    public CharacterController(String marvel_comic_character_name, String comic_appearance_1, String comic_appearance_2, String comic_appearance_3, String comic_appearance_4, String comic_appearance_5, String comic_appearance_6, String comic_appearance_7, String comic_appearance_8, String comic_appearance_9, String comic_appearance_10, String comic_appearance_11, String comic_appearance_12, String comic_appearance_13, String comic_appearance_14, String comic_appearance_15, String comic_appearance_16, String comic_appearance_17, String comic_appearance_18, String comic_appearance_19, String comic_appearance_20, String comic_appearance_21, String comic_appearance_22, String comic_appearance_23, String comic_appearance_24, String comic_appearance_25, String comic_appearance_26, String comic_appearance_27, String comic_appearance_28, String comic_appearance_29, String comic_appearance_30, String comic_appearance_31, String comic_appearance_32, String comic_appearance_33, String comic_appearance_34, String comic_appearance_35) {
         this.marvel_comic_character_name = marvel_comic_character_name;
         this.comic_appearance_1 = comic_appearance_1;
         this.comic_appearance_2 = comic_appearance_2;
@@ -77,7 +82,7 @@ public class Character {
         this.comic_appearance_35 = comic_appearance_35;
     }
 
-    public Character(){
+    public CharacterController(){
 
     }
 
