@@ -1,11 +1,14 @@
 package com.example.marvelCharacters.Character;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Marvel_Super_Heroes")
+@Table(name = "marvel_super_heroes")
 public class CharacterController {
+    @Id
+    private Long L_P;
     private String marvel_comic_character_name;
     private String comic_appearance_1;
     private String comic_appearance_2;

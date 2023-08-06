@@ -1,16 +1,18 @@
 package com.example.marvelCharacters.User;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users21")
+@Table(name = "users")
 public class User {
     private String imie;
     private String nazwisko;
     private String login;
     private String email;
     private String status;
+    @Id
     private Long userid;
 
     public User(String imie, String nazwisko, String login, String email, String status, Long userid) {

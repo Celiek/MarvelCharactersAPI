@@ -1,11 +1,14 @@
 package com.example.marvelCharacters.Comic;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Marvel_Comics")
+@Table(name="marvel_comics")
 public class Comic {
+    @Id
+    private Long LP;
     private String comic_name;
     private String active_years;
     private String issue_title;
