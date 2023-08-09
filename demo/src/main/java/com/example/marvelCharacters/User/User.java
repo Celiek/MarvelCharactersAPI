@@ -1,8 +1,7 @@
 package com.example.marvelCharacters.User;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "users")
@@ -13,15 +12,17 @@ public class User {
     private String email;
     private String status;
     @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private Long userid;
 
-    public User(String imie, String nazwisko, String login, String email, String status, Long userid) {
+    public User(String imie, String nazwisko, String login, String email, String status) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.login = login;
         this.email = email;
         this.status = status;
-        this.userid = userid;
     }
 
     public User() {
@@ -72,10 +73,4 @@ public class User {
     }
 
 
-    /*
-    //prawdopodobnie niepotrzebne
-    public void setUserid(Long userid) {
-        this.userid = userid;
-    }
-     */
 }

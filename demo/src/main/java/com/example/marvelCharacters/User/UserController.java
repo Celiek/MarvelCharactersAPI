@@ -1,8 +1,7 @@
 package com.example.marvelCharacters.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -10,26 +9,53 @@ import java.util.List;
 @RequestMapping("api/v1/user")
 public class UserController {
 
-    private final User user;
+    //private final User user;
 
-    @Autowired
-    public UserController(User user) {
-        this.user = user;
-    }
+    private final UserRepository userRepository;
 
-//    public List<User> getUser(){
-//        return userService.getUser();
+    //@Autowired
+//    public UserController(User user, UserRepository userRepository) {
+//        this.user = user;
+//        this.userRepository = userRepository;
 //    }
 
-    public List<User> getUsers() {
+    @Autowired
+    public UserController( UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<User> getEveryUser(){
+        return userRepository.getUsers();
+    }
+
+    @PostMapping("/creteadmin")
+    public List<User> createAdminIfNotExists(@RequestParam(value = "imie")String imie,
+                                             @RequestParam(value = "nazwisko")String nazwisko,
+                                             @RequestParam(value = "login")String login,
+                                             @RequestParam(value = "email")String email){
+
+        return userRepository.CreateAdminIfNotExists(imie,nazwisko,login,email);
+
+    }
+
+    @PostMapping("/createuser")
+    public List<User> createUserIfNotExists(@RequestParam(value = "imie")String imie,
+                                            @RequestParam(value = "nazwisko")String nazwisko,
+                                            @RequestParam(value = "login")String login,
+                                            @RequestParam(value = "email")String email){
+
+        return userRepository.CreateUserIfNotExist(imie, nazwisko, login, email);
+    }
+
+    @GetMapping
+    public List<User> getUsers(){
         return List.of(
                 new User(
                         "adam",
-                        "kielecki",
-                        "akiel",
-                        "akiel@gmail.com",
-                        "user",
-                        1L
+                        "nowak",
+                        "anowak",
+                        "anowak@o2.pl",
+                        "user"
                 )
         );
     }
