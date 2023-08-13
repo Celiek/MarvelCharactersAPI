@@ -1,7 +1,6 @@
 package com.example.marvelCharacters.User;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "users")

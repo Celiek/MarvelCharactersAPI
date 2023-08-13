@@ -1,14 +1,15 @@
 package com.example.marvelCharacters.Comic;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="marvel_comics")
 public class Comic {
     @Id
-    private Long LP;
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private Long lp;
     private String comic_name;
     private String active_years;
     private String issue_title;
@@ -17,10 +18,10 @@ public class Comic {
     private String penciler;
     private String writer;
     private String cover_artist;
-    private String Imprint;
-    private String Format;
-    private String Rating;
-    private String Price;
+    private String imprint;
+    private String format;
+    private String rating;
+    private String price;
 
     public Comic(String comic_name, String active_years, String issue_title, String publish_date, String issue_description, String penciler, String writer, String cover_artist, String imprint, String format, String rating, String price) {
         this.comic_name = comic_name;
@@ -31,10 +32,10 @@ public class Comic {
         this.penciler = penciler;
         this.writer = writer;
         this.cover_artist = cover_artist;
-        Imprint = imprint;
-        Format = format;
-        Rating = rating;
-        Price = price;
+        this.imprint = imprint;
+        this.format = format;
+        this.rating = rating;
+        this.price = price;
     }
 
     public Comic() {}
@@ -104,34 +105,34 @@ public class Comic {
     }
 
     public String getImprint() {
-        return Imprint;
+        return imprint;
     }
 
     public void setImprint(String imprint) {
-        Imprint = imprint;
+        imprint = imprint;
     }
 
     public String getFormat() {
-        return Format;
+        return format;
     }
 
     public void setFormat(String format) {
-        Format = format;
+        format = format;
     }
 
     public String getRating() {
-        return Rating;
+        return rating;
     }
 
     public void setRating(String rating) {
-        Rating = rating;
+        rating = rating;
     }
 
     public String getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(String price) {
-        Price = price;
+        price = price;
     }
 }
