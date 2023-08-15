@@ -13,7 +13,7 @@ public interface CharacterRepository extends JpaRepository<CharacterController,L
     @Query(
             value = "SELECT" +
                     "marvel_comic_character_name" +
-                    "FROM \"Marvel_Super_Heroes\" " +
+                    "FROM marvel_super_heroes " +
                     "WHERE comic_appearance_1 ~*'comic'" +
                     "OR comic_appearance_2 ~*'comic'" +
                     "OR comic_appearance_3 ~*'comic'" +
@@ -78,7 +78,7 @@ public interface CharacterRepository extends JpaRepository<CharacterController,L
                     "comic_appearance_20," +
                     "comic_appearance_21," +
                     "comic_appearance_22," +
-                    "comic_appearance_23," +
+                    "com ic_appearance_23," +
                     "comic_appearance_24," +
                     "comic_appearance_25," +
                     "comic_appearance_26," +

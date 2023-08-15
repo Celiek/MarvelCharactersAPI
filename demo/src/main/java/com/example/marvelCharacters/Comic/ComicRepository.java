@@ -58,31 +58,25 @@ public interface ComicRepository extends JpaRepository<Comic,Long> {
     List<Comic> findComicByPublishDate(@RequestParam(value = "date") String date);
 
     //dodawanie komiksów do bazy danych
-    //ciągle w trakcie naprawiania
-    //do zamiany na dwa mniejsze pod zapytania
-//    @Transactional
-//    @Query(value = "INSERT INTO marvel_comics (comic_name, active_years, issue_title," +
-//            " publish_date, issue_description, penciler, writer, cover_artist," +
-//            " imprint, format, rating, price) " +
-//            " SELECT :comic_name, :active_years, :issue_title, " +
-//            " :publish_date, :issue_description,:penciler, " +
-//            " :writer, :cover_artist, :imprint, " +
-//            " :format, :rating, :price" +
-//            "FROM users" +
-//            "WHERE login= :log AND status='admin'",
-//            nativeQuery = true
-//            )
-//    List<Comic> insertComic(@Param("comic_name")String comic_name,
-//                            @Param("active_years")String active_years,
-//                            @Param("issue_title")String issue_title,
-//                            @Param("publish_date")String publish_date,
-//                            @Param("issue_description")String issue_description,
-//                            @Param("penciler")String penciler,
-//                            @Param("writer")String writer,
-//                            @Param("cover_artist")String cover_artist,
-//                            @Param("imprint")String imprint,
-//                            @Param("format")String format,
-//                            @Param("rating")String rating,
-//                            @Param("price")String price,
-//                            @Param("log")String log);
+    //nie zabezpieczone dalej do wykminienia jak to zrobic
+    @Transactional
+    @Query(value = "INSERT INTO marvel_comics (comic_name, active_years, issue_title," +
+            " publish_date, issue_description, penciler, writer, cover_artist," +
+            " imprint, format, rating, price) " +
+            " VALUES (:comic_name, :active_years, :issue_title, :publish_date, :issue_description," +
+            " :penciler, :writer, :cover_artist, :imprint, :format, :rating, :price)",
+            nativeQuery = true
+            )
+    List<Comic> insertComic(@Param("comic_name")String comic_name,
+                            @Param("active_years")String active_years,
+                            @Param("issue_title")String issue_title,
+                            @Param("publish_date")String publish_date,
+                            @Param("issue_description")String issue_description,
+                            @Param("penciler")String penciler,
+                            @Param("writer")String writer,
+                            @Param("cover_artist")String cover_artist,
+                            @Param("imprint")String imprint,
+                            @Param("format")String format,
+                            @Param("rating")String rating,
+                            @Param("price")String price);
 }
