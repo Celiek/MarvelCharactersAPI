@@ -1,10 +1,12 @@
 package com.example.marvelCharacters.Character;
 
+import com.example.marvelCharacters.Character.dto.GetCharacterDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/character")
@@ -19,6 +21,17 @@ public class CharacterController {
     List<Character> countAllCharacterOcurences(@RequestParam(value = "characters") String characters){
         return character.countAllCharacterOccurences(characters);
     }
+
+    //wersja DTO
+    //spojler: nie dziala
+    @GetMapping("/countalloccurences/dto")
+    List<GetCharacterDto> countAllCharacterOcurencesDTO(@RequestParam(value = "characters") String characters){
+        return character.countAllCharacterOccurences(characters).stream()
+                .map(get -> new GetCharacterDto(characters))
+                .collect(Collectors.toList());
+    }
+
+
     @GetMapping("/characterbycomic")
     List<Character> findCharacterByComic(@RequestParam(value = "comic")String comic){
         return character.findCharacterByComic(comic);

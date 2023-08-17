@@ -10,11 +10,12 @@ public interface CharacterRepository extends JpaRepository<Character,Long> {
 
     //zliczanie wystapien danej postaci w zbiorze postaci
     @Query(
-            value="SELECT COUNT(marvel_comic_character_name) " +
-                    "FROM marvel_super_heroes WHERE marvel_comic_character_name ~* ':character'",
+            value=" SELECT COUNT(marvel_comic_character_name) AS l_p " +
+                    "FROM marvel_super_heroes " +
+                    "WHERE marvel_comic_character_name ~* ':character'",
             nativeQuery = true
     )
-    List<Character> countAllCharacterOccurences(@Param(value = "character")String characters);
+    List<Character> countAllCharacterOccurences(@Param(value = "character")String character);
 
     //wyszukiwanie postaci przez wystapienia w komiksach
     @Query(
@@ -106,18 +107,18 @@ public interface CharacterRepository extends JpaRepository<Character,Long> {
 
     //dodawanie komiksow z opcja auto dodawania lp.
     @Query(value = "INSERT INTO marvel_super_heroes (LP,marvel_comic_character_name,comic_appearance_1,comic_appearance_2," +
-            "comic_appearance_3,comic_appearance_4,comic_appearance_5," +
-            "comic_appearance_6,comic_appearance_7,comic_appearance_8," +
-            "comic_appearance_9,comic_appearance_10,comic_appearance_11," +
-            "comic_appearance_12,comic_appearance_13,comic_appearance_14," +
-            "comic_appearance_15,comic_appearance_16,comic_appearance_17," +
-            "comic_appearance_18,comic_appearance_19,comic_appearance_20," +
-            "comic_appearance_21,comic_appearance_22,comic_appearance_23," +
-            "comic_appearance_24,comic_appearance_25,comic_appearance_26," +
-            "comic_appearance_27,comic_appearance_28,comic_appearance_29," +
-            "comic_appearance_30,comic_appearance_31,comic_appearance_32," +
-            "comic_appearance_33,comic_appearance_34,comic_appearance_35)" +
-            "VALUES( " +
+            " comic_appearance_3,comic_appearance_4,comic_appearance_5," +
+            " comic_appearance_6,comic_appearance_7,comic_appearance_8," +
+            " comic_appearance_9,comic_appearance_10,comic_appearance_11," +
+            " comic_appearance_12,comic_appearance_13,comic_appearance_14," +
+            " comic_appearance_15,comic_appearance_16,comic_appearance_17," +
+            " comic_appearance_18,comic_appearance_19,comic_appearance_20," +
+            " comic_appearance_21,comic_appearance_22,comic_appearance_23," +
+            " comic_appearance_24,comic_appearance_25,comic_appearance_26," +
+            " comic_appearance_27,comic_appearance_28,comic_appearance_29," +
+            " comic_appearance_30,comic_appearance_31,comic_appearance_32," +
+            " comic_appearance_33,comic_appearance_34,comic_appearance_35)" +
+            " VALUES( " +
             " :marvel_comic_character_name, :comic_appearance_1, :comic_appearance_2, :comic_appearance_3," +
             " :comic_appearance_4, :comic_appearance_5, :comic_appearance_6," +
             " :comic_appearance_7, :comic_appearance_8, :comic_appearance_9," +
