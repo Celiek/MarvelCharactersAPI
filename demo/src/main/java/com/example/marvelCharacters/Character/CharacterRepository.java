@@ -10,56 +10,56 @@ public interface CharacterRepository extends JpaRepository<Character,Long> {
 
     //zliczanie wystapien danej postaci w zbiorze postaci
     @Query(
-            value=" SELECT COUNT(marvel_comic_character_name) AS l_p " +
+            value=" SELECT COUNT(marvel_comic_character_name) " +
                     "FROM marvel_super_heroes " +
-                    "WHERE marvel_comic_character_name ~* ':character'",
+                    "WHERE marvel_comic_character_name ~* :chara",
             nativeQuery = true
     )
-    List<Character> countAllCharacterOccurences(@Param(value = "character")String character);
+    List<Long> countAllCharacterOccurences(@Param(value = "chara")String chara);
 
     //wyszukiwanie postaci przez wystapienia w komiksach
     @Query(
             value = "SELECT " +
                     " marvel_comic_character_name, l_p" +
                     " FROM marvel_super_heroes " +
-                    " WHERE comic_appearance_1 ~*'comic'" +
-                    " OR comic_appearance_2 ~*'comic'" +
-                    " OR comic_appearance_3 ~*'comic'" +
-                    " OR comic_appearance_4 ~*'comic'" +
-                    " OR comic_appearance_5 ~*'comic'" +
-                    " OR comic_appearance_6 ~*'comic'" +
-                    " OR comic_appearance_7 ~*'comic'" +
-                    " OR comic_appearance_8 ~*'comic'" +
-                    " OR comic_appearance_9 ~*'comic'" +
-                    " OR comic_appearance_10 ~*'comic'" +
-                    " OR comic_appearance_11 ~*'comic'" +
-                    " OR comic_appearance_12 ~*'comic'" +
-                    " OR comic_appearance_13 ~*'comic'" +
-                    " OR comic_appearance_14 ~*'comic'" +
-                    " OR comic_appearance_15 ~*'comic'" +
-                    " OR comic_appearance_16 ~*'comic'" +
-                    " OR comic_appearance_17 ~*'comic'" +
-                    " OR comic_appearance_18 ~*'comic'" +
-                    " OR comic_appearance_19 ~*'comic'" +
-                    " OR comic_appearance_20 ~*'comic'" +
-                    " OR comic_appearance_21 ~*'comic'" +
-                    " OR comic_appearance_22 ~*'comic'" +
-                    " OR comic_appearance_23 ~*'comic'" +
-                    " OR comic_appearance_24 ~*'comic'" +
-                    " OR comic_appearance_25 ~*'comic'" +
-                    " OR comic_appearance_26 ~*'comic'" +
-                    " OR comic_appearance_27 ~*'comic'" +
-                    " OR comic_appearance_28 ~*'comic'" +
-                    " OR comic_appearance_29 ~*'comic'" +
-                    " OR comic_appearance_30 ~*'comic'" +
-                    " OR comic_appearance_31 ~*'comic'" +
-                    " OR comic_appearance_32 ~*'comic'" +
-                    " OR comic_appearance_33 ~*'comic'" +
-                    " OR comic_appearance_34 ~*'comic'" +
-                    " OR comic_appearance_35 ~*'comic';",
+                    " WHERE comic_appearance_1 ~* :comic" +
+                    " OR comic_appearance_2 ~* :comic" +
+                    " OR comic_appearance_3 ~* :comic" +
+                    " OR comic_appearance_4 ~* :comic" +
+                    " OR comic_appearance_5 ~* :comic" +
+                    " OR comic_appearance_6 ~* :comic" +
+                    " OR comic_appearance_7 ~* :comic" +
+                    " OR comic_appearance_8 ~* :comic" +
+                    " OR comic_appearance_9 ~* :comic" +
+                    " OR comic_appearance_10 ~* :comic" +
+                    " OR comic_appearance_11 ~* :comic" +
+                    " OR comic_appearance_12 ~* :comic" +
+                    " OR comic_appearance_13 ~* :comic" +
+                    " OR comic_appearance_14 ~* :comic" +
+                    " OR comic_appearance_15 ~* :comic" +
+                    " OR comic_appearance_16 ~* :comic" +
+                    " OR comic_appearance_17 ~* :comic" +
+                    " OR comic_appearance_18 ~* :comic" +
+                    " OR comic_appearance_19 ~* :comic" +
+                    " OR comic_appearance_20 ~* :comic" +
+                    " OR comic_appearance_21 ~* :comic" +
+                    " OR comic_appearance_22 ~* :comic" +
+                    " OR comic_appearance_23 ~* :comic" +
+                    " OR comic_appearance_24 ~* :comic" +
+                    " OR comic_appearance_25 ~* :comic" +
+                    " OR comic_appearance_26 ~* :comic" +
+                    " OR comic_appearance_27 ~* :comic" +
+                    " OR comic_appearance_28 ~* :comic" +
+                    " OR comic_appearance_29 ~* :comic" +
+                    " OR comic_appearance_30 ~* :comic" +
+                    " OR comic_appearance_31 ~* :comic" +
+                    " OR comic_appearance_32 ~* :comic" +
+                    " OR comic_appearance_33 ~* :comic" +
+                    " OR comic_appearance_34 ~* :comic" +
+                    " OR comic_appearance_35 ~* :comic ;",
             nativeQuery = true
     )
-    List<Character> findCharacterByComic(@Param("comic") String comic);
+    List<String> findCharacterByComic(@Param("comic") String comic);
 
     //wyszukiwanie komiksow przez nazwe Bohatera
     @Query(
@@ -100,13 +100,13 @@ public interface CharacterRepository extends JpaRepository<Character,Long> {
                     " comic_appearance_33," +
                     " comic_appearance_34," +
                     " comic_appearance_35" +
-                    " FROM marvel_super_heroes WHERE marvel_comic_character_name ~*'name';",
+                    " FROM marvel_super_heroes WHERE marvel_comic_character_name ~* :name",
             nativeQuery = true
     )
-    List<Character> findComicsByCharacterName(@Param("name")String name);
+    List<String> findComicsByCharacterName(@Param("name")String name);
 
     //dodawanie komiksow z opcja auto dodawania lp.
-    @Query(value = "INSERT INTO marvel_super_heroes (LP,marvel_comic_character_name,comic_appearance_1,comic_appearance_2," +
+    @Query(value = "INSERT INTO marvel_super_heroes (l_p,marvel_comic_character_name,comic_appearance_1,comic_appearance_2," +
             " comic_appearance_3,comic_appearance_4,comic_appearance_5," +
             " comic_appearance_6,comic_appearance_7,comic_appearance_8," +
             " comic_appearance_9,comic_appearance_10,comic_appearance_11," +

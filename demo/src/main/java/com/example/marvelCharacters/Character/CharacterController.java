@@ -2,7 +2,6 @@ package com.example.marvelCharacters.Character;
 
 import com.example.marvelCharacters.Character.dto.GetCharacterDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +17,8 @@ public class CharacterController {
         this.character = character;
     }
     @GetMapping("/countalloccurences")
-    List<Character> countAllCharacterOcurences(@RequestParam(value = "characters") String characters){
-        return character.countAllCharacterOccurences(characters);
+    List<Long> countAllCharacterOcurences(@RequestParam(value = "chara") String chara){
+        return character.countAllCharacterOccurences(chara);
     }
 
     //wersja DTO
@@ -33,12 +32,12 @@ public class CharacterController {
 
 
     @GetMapping("/characterbycomic")
-    List<Character> findCharacterByComic(@RequestParam(value = "comic")String comic){
+    List<String> findCharacterByComic(@RequestParam(value = "comic")String comic){
         return character.findCharacterByComic(comic);
     }
 
     @GetMapping("/bycharactername")
-    List<Character> findComicsByCharacterName(@RequestParam(value = "name")String name){
+    List<String> findComicsByCharacterName(@RequestParam(value = "name")String name){
         return character.findComicsByCharacterName(name);
     }
     @PostMapping("/insertcomic")
