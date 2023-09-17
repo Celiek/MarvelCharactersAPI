@@ -1,35 +1,34 @@
-package com.example.marvelCharacters.Character;
+package com.example.marvelCharacters.Character.Controller;
 
-import com.example.marvelCharacters.Character.dto.GetCharacterDto;
+import com.example.marvelCharacters.Character.Entity.Character;
+import com.example.marvelCharacters.Character.Repository.CharacterRepository;
+import com.example.marvelCharacters.Character.Service.Implementation.CharacterServiceImpl;
+import com.example.marvelCharacters.Character.dto.CharacterDto;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("api/v1/character")
-public class CharacterController {
-    private final CharacterRepository character;
 
+public class CharacterController {
+    private CharacterRepository character;
+    @Autowired
+    private CharacterServiceImpl characterService;
+    //TODO:
+    //Do przerobienia na DTO(Sporo roboty)
     @Autowired
     public CharacterController(CharacterRepository character) {
         this.character = character;
     }
     @GetMapping("/countalloccurences")
-    List<Long> countAllCharacterOcurences(@RequestParam(value = "chara") String chara){
+    List<Long> countAllCharacterOccurences(@RequestParam(value = "chara") String chara){
         return character.countAllCharacterOccurences(chara);
     }
-
-    //wersja DTO
-    //spojler: nie dziala
-    @GetMapping("/countalloccurences/dto")
-    List<GetCharacterDto> countAllCharacterOcurencesDTO(@RequestParam(value = "characters") String characters){
-        return character.countAllCharacterOccurences(characters).stream()
-                .map(get -> new GetCharacterDto(characters))
-                .collect(Collectors.toList());
-    }
-
 
     @GetMapping("/characterbycomic")
     List<String> findCharacterByComic(@RequestParam(value = "comic")String comic){
@@ -87,5 +86,12 @@ public class CharacterController {
                                     comic_appearance_28,comic_appearance_29,comic_appearance_30,comic_appearance_31,
                                     comic_appearance_32,comic_appearance_33,comic_appearance_34,comic_appearance_35
                                     );
+    }
+    //TODO:
+    //Naprawic dostarczanie tylko info o postaci bez wystapien w komiksach
+    @GetMapping("/getcharacterbyid")
+    public ResponseEntity<CharacterDto> getCharacterById(@RequestParam("id") Long characterId){
+        CharacterDto characterDto = characterService.getCharacterById(characterId);
+        return ResponseEntity.ok(characterDto);
     }
 }
