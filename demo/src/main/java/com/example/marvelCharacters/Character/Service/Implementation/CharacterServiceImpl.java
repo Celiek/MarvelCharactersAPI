@@ -7,7 +7,6 @@ import com.example.marvelCharacters.Character.Repository.CharacterRepository;
 import com.example.marvelCharacters.Character.Service.CharacterService;
 import com.example.marvelCharacters.Character.dto.CharacterDto;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 

@@ -1,5 +1,6 @@
-package com.example.marvelCharacters.User;
+package com.example.marvelCharacters.User.Repository;
 
+import com.example.marvelCharacters.User.Entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

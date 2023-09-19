@@ -1,5 +1,7 @@
-package com.example.marvelCharacters.User;
+package com.example.marvelCharacters.User.Controller;
 
+import com.example.marvelCharacters.User.Entity.User;
+import com.example.marvelCharacters.User.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,17 +49,17 @@ public class UserController {
 
 
     //tylko dla testów
-    @RequestMapping("/getAll")
-    public List<User> getUsers(){
-        return List.of(
-                new User(
-                        "adam",
-                        "nowak",
-                        "anowak",
-                        "anowak@o2.pl",
-                        "user"
-                )
-        );
-    }
+//    @RequestMapping("/getAll")
+//    public List<User> getUsers(){
+//        return List.of(
+//                new User(
+//                        "adam",
+//                        "nowak",
+//                        "anowak",
+//                        "anowak@o2.pl",
+//                        "user"
+//                )
+//        );
+//    }
 
 }

@@ -87,8 +87,7 @@ public class CharacterController {
                                     comic_appearance_32,comic_appearance_33,comic_appearance_34,comic_appearance_35
                                     );
     }
-    //TODO:
-    //Naprawic dostarczanie tylko info o postaci bez wystapien w komiksach
+
     @GetMapping("/getcharacterbyid")
     public ResponseEntity<CharacterDto> getCharacterById(@RequestParam("id") Long characterId){
         CharacterDto characterDto = characterService.getCharacterById(characterId);

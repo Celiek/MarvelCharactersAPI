@@ -1,5 +1,8 @@
-package com.example.marvelCharacters.Comic;
+package com.example.marvelCharacters.Comic.Controller;
 
+import com.example.marvelCharacters.Comic.Entity.Comic;
+import com.example.marvelCharacters.Comic.Repository.ComicRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,15 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("api/v1/comic")
 public class ComicController {
 
     private final ComicRepository comicRepository;
-    @Autowired
-    public ComicController(ComicRepository comicRepository) {
-        this.comicRepository = comicRepository;
-    }
 
     @GetMapping("/byname")
     List<Comic> findComicByName(@Param(value = "name")String name){
