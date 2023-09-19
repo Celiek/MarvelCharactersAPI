@@ -1,2 +1,2 @@
 # MarvelCharactersAPI
-Simple API with for later use on my Android app(also needed to create)
+Simple API for retrieving data about Marvel Comics and Marvel Characters
